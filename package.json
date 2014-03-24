@@ -1,0 +1,27 @@
+{
+  "name": "jade-virtualdom",
+  "description": "compile jade templates to virtualdom",
+  "version": "0.0.1",
+  "keywords": [],
+  "maintainers": [
+    "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
+  ],
+  "dependencies": {
+    "jade": "~1.3.0",
+    "with": "~3.0.0"
+  },
+  "peerDependencies": {
+  },
+  "devDependencies": {
+    "istanbul": "*",
+    "mocha": "*",
+    "should": "*",
+    "coveralls": "*",
+    "jshint": "*"
+  },
+  "scripts": {
+    "test": "make test-coveralls"
+  },
+  "repository": "git://github.com/Swatinem/jade-virtualdom.git",
+  "license": "LGPLv3"
+}
