@@ -15,12 +15,16 @@ Heavily inspired by [jade-react](https://github.com/duncanbeevers/jade-react)
 ## Usage
 
 ```js
-var fn = jadeVirtualdom('#jade.is.cool(key=somekey)=somecontent');
+var fn = jadeVirtualdom('#jade.is.cool(key=somekey)=somecontent', {some: options});
 var vnode = fn({key: '1', somecontent: 'locals \\o/'});
 // and then render or diff the virtual dom:
 var node = virtualDom.toDOM(vnode);
 document.body.appendChild(node);
 ```
+
+## TODO
+
+* support more code constructs, like variable assignment
 
 ## License
 
