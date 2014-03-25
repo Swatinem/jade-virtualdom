@@ -123,19 +123,22 @@ describe('jade-virtualdom', function () {
 	it('should support each array', function () {
 		var jade = 'each el in arr\n' +
 		           '  li=el';
-		var node = jadeV(jade)({arr: ['1', '2']});
+		var node = jadeV(jade)({arr: [1, 2]});
 		node.should.eql([{tag: 'li', children: ['1']},{tag: 'li', children: ['2']}]);
+		node[0].children[0].should.be.type('string');
 	});
 	it('should support key value iteration of objects', function () {
 		var jade = 'each el, key in obj\n' +
 		           '  li(key=key)=el';
-		var node = jadeV(jade)({obj: {'k1': '1', 'k2': '2'}});
+		var node = jadeV(jade)({obj: {'k1': 1, 'k2': 2}});
 		node.should.eql([{tag: 'li', key: 'k1', children: ['1']},{tag: 'li', key: 'k2', children: ['2']}]);
+		node[0].children[0].should.be.type('string');
 	});
 	it('should deal with variable interpolation', function () {
 		var jade = 'div #{obj.prop[0]}text#{obj.prop[1]}';
-		var node = jadeV(jade)({obj: {prop: ['arr', 'arr2']}});
-		node.should.eql({tag: 'div', children: ['', 'arr', 'text', 'arr2', '']});
+		var node = jadeV(jade)({obj: {prop: [0, 1]}});
+		node.should.eql({tag: 'div', children: ['', '0', 'text', '1', '']});
+		node.children[1].should.be.type('string');
 	});
 	it.skip('should `toString()` all output variables', function () {
 		
