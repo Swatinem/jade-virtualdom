@@ -134,6 +134,13 @@ describe('jade-virtualdom', function () {
 		node.should.eql([{tag: 'li', key: 'k1', children: ['1']},{tag: 'li', key: 'k2', children: ['2']}]);
 		node[0].children[0].should.be.type('string');
 	});
+	it('should support iteration on array-like objects', function () {
+		var jade = 'each el in arr\n' +
+		           '  li=el';
+		var node = jadeV(jade)({arr: {0: 1, 1: 2, length: 2}});
+		node.should.eql([{tag: 'li', children: ['1']},{tag: 'li', children: ['2']}]);
+		node[0].children[0].should.be.type('string');
+	});
 	it('should deal with variable interpolation', function () {
 		var jade = 'div #{obj.prop[0]}text#{obj.prop[1]}';
 		var node = jadeV(jade)({obj: {prop: [0, 1]}});
