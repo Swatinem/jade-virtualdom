@@ -144,8 +144,7 @@ describe('jade-virtualdom', function () {
 	it('should deal with variable interpolation', function () {
 		var jade = 'div #{obj.prop[0]}text#{obj.prop[1]}';
 		var node = jadeV(jade)({obj: {prop: [0, 1]}});
-		node.should.eql({tag: 'div', children: ['', '0', 'text', '1', '']});
-		node.children[1].should.be.type('string');
+		node.should.eql({tag: 'div', children: ['0text1']});
 	});
 	it('should ignore comments', function () {
 		var jade = 'div\n// comment';
@@ -157,9 +156,6 @@ describe('jade-virtualdom', function () {
 		var node = jadeV(jade)({bar: 'bar'});
 		// XXX: would be nice to avoid that undefined here
 		node.should.eql([undefined, {tag: 'div', children: ['bar']}]);
-	});
-	it.skip('should `toString()` all output variables', function () {
-		
 	});
 });
 
