@@ -140,6 +140,17 @@ describe('jade-virtualdom', function () {
 		node.should.eql({tag: 'div', children: ['', '0', 'text', '1', '']});
 		node.children[1].should.be.type('string');
 	});
+	it('should ignore comments', function () {
+		var jade = 'div\n// comment';
+		var node = jadeV(jade)({});
+		node.should.eql([{tag: 'div'}, undefined]);
+	});
+	it('should support code with assignments', function () {
+		var jade = '-var foo = bar\ndiv=foo';
+		var node = jadeV(jade)({bar: 'bar'});
+		// XXX: would be nice to avoid that undefined here
+		node.should.eql([undefined, {tag: 'div', children: ['bar']}]);
+	});
 	it.skip('should `toString()` all output variables', function () {
 		
 	});

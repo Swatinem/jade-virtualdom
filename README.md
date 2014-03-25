@@ -22,10 +22,6 @@ var node = virtualDom.toDOM(vnode);
 document.body.appendChild(node);
 ```
 
-## TODO
-
-* support more code constructs, like variable assignment
-
 ## License
 
   LGPLv3
