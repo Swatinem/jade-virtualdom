@@ -3,7 +3,7 @@ test: lint
 		./node_modules/mocha/bin/_mocha
 
 lint:
-	-./node_modules/.bin/jshint ./test ./index.js
+	-./node_modules/.bin/jshint ./test ./lib ./index.js
 
 test-coveralls: lint
 	NODE_ENV=test node --harmony ./node_modules/.bin/istanbul cover --report lcovonly \
