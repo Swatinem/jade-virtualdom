@@ -1,7 +1,7 @@
 {
   "name": "jade-virtualdom",
   "description": "compile jade templates to virtualdom",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [],
   "maintainers": [
     "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
