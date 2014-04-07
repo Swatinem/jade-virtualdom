@@ -122,21 +122,21 @@ describe('jade-virtualdom', function () {
 	});
 	it('should support each array', function () {
 		var jade = 'each el in arr\n' +
-		           '  li=el';
+		           '  li=el.toString()';
 		var node = jadeV(jade)({arr: [1, 2]});
 		node.should.eql([{tag: 'li', children: ['1']},{tag: 'li', children: ['2']}]);
 		node[0].children[0].should.be.type('string');
 	});
 	it('should support key value iteration of objects', function () {
 		var jade = 'each el, key in obj\n' +
-		           '  li(key=key)=el';
+		           '  li(key=key)=el.toString()';
 		var node = jadeV(jade)({obj: {'k1': 1, 'k2': 2}});
 		node.should.eql([{tag: 'li', key: 'k1', children: ['1']},{tag: 'li', key: 'k2', children: ['2']}]);
 		node[0].children[0].should.be.type('string');
 	});
 	it('should support iteration on array-like objects', function () {
 		var jade = 'each el in arr\n' +
-		           '  li=el';
+		           '  li=el.toString()';
 		var node = jadeV(jade)({arr: {0: 1, 1: 2, length: 2}});
 		node.should.eql([{tag: 'li', children: ['1']},{tag: 'li', children: ['2']}]);
 		node[0].children[0].should.be.type('string');
