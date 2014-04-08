@@ -167,5 +167,15 @@ describe('jade-virtualdom', function () {
 		// XXX: would be nice to avoid that undefined here
 		node.should.eql([undefined, {tag: 'div', children: ['bar']}]);
 	});
+	it('should support two consecutive ifs', function () {
+		var jade = 'if foo\n  =foo\nif bar\n  =bar';
+		var node = jadeV(jade)({foo: 'foo', bar: 'bar'});
+		node.should.eql(['foo', 'bar']);
+	});
+	it('should support if followed by var', function () {
+		var jade = 'if foo\n  =foo\n- var bar = "bar"';
+		var node = jadeV(jade)({foo: 'foo'});
+		node.should.eql(['foo', undefined]);
+	});
 });
 
