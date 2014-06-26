@@ -177,5 +177,10 @@ describe('jade-virtualdom', function () {
 		var node = jadeV(jade)({foo: 'foo'});
 		node.should.eql(['foo', undefined]);
 	});
+	it('should support multiple children of an if', function () {
+		var jade = 'if foo\n  h1\n  h2';
+		var node = jadeV(jade)({foo: true});
+		node.should.eql([{tag: 'h1'}, {tag: 'h2'}]);
+	});
 });
 
