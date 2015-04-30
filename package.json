@@ -23,5 +23,5 @@
     "test": "make test-coveralls"
   },
   "repository": "git://github.com/Swatinem/jade-virtualdom.git",
-  "license": "LGPLv3"
+  "license": "LGPL-3.0"
 }
